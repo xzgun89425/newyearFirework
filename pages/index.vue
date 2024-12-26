@@ -212,7 +212,7 @@ function changePlace(params) {
         </h1>
         <div v-if="countdown > 0"
             class="text-white absolute top-1/2 left-1/2 z-[60] -translate-x-1/2 -translate-y-1/2 text-xl w-full flex flex-col items-center">
-            <h1 class="text-center text-3xl md:text-5xl font-bold mb-4">2025 跨年倒數</h1>
+            <h1 class="text-center text-3xl md:text-5xl font-bold mb-4">2025 跨年倒數計時</h1>
             <Countdown v-model="countdownDate"></Countdown>
         </div>
         <audio hidden="true" ref="fireworksAudio">
