@@ -1,6 +1,11 @@
 <script setup>
 import dayjs from "dayjs"
 import duration from "dayjs/plugin/duration"
+import taipei101 from "@/assets/taipei101.jpg"
+import tower from "@/assets/85.jpg"
+import alimountain from "@/assets/alimountain.jpeg"
+import centerpark from "@/assets/centerpark.jpg"
+
 dayjs.extend(duration);
 const canvas = ref(null);
 const ctx = ref(null);
@@ -9,10 +14,10 @@ const countdownDate = ref('2025-1-1 00:00:00'); // 倒數日期
 const timer = ref(null);
 const bgIndex = ref(0)
 const bgList = reactive([
-    { name: '臺北101', img: '/taipei101.jpg' },
-    { name: '高雄85大樓', img: '/85.jpg' },
-    { name: '嘉義阿里山', img: '/alimountain.jpeg' },
-    { name: '臺中中央公園', img: '/centerpark.jpg' },
+    { name: '臺北101', alt: 'taipei101', img: taipei101 },
+    { name: '高雄85大樓', alt: '85tower', img: tower },
+    { name: '嘉義阿里山', alt: 'alimountain', img: alimountain },
+    { name: '臺中中央公園', alt: 'centerpark', img: centerpark },
 ])
 // Helper functions
 const PI2 = Math.PI * 2;
@@ -203,7 +208,7 @@ function changePlace(params) {
 <template>
     <div class="bg-black cursor-pointer w-screen h-[100dvh]">
         <img :src="bgList[bgIndex].img" :class="[countdown > 0 ? 'opacity-50' : 'opacity-20']"
-            class="fixed top-0 left-0 z-50 w-screen h-[100dvh] object-cover duration-500" alt="">
+            class="fixed top-0 left-0 z-50 w-screen h-[100dvh] object-cover duration-500" :alt="bgList[bgIndex].alt" />
         <canvas ref="canvas"></canvas>
         <h1 :class="[countdown > 0 ? 'opacity-0' : 'opacity-100']"
             class="w-full text-center text-3xl md:text-5xl duration-500 font-bold mb-4 absolute top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2">
