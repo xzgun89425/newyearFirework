@@ -183,7 +183,6 @@ function checkDate(params) {
     const diff = target.diff(now); // 計算差異，單位是毫秒
     if (diff <= 0) {
         clearInterval(timer.value);
-        // emit('isEnd', true)
         countdown.value = 0 // 如果目標日期已經過去
     } else {
         countdown.value = Math.floor(dayjs.duration(diff).asSeconds())
@@ -197,6 +196,9 @@ onUnmounted(() => {
 });
 
 function changePlace(params) {
+    if (countdown.value <= 0 && params == 'bg') {
+        return
+    }
     if (bgIndex.value == 3) {
         bgIndex.value = 1;
     } else {
@@ -206,7 +208,7 @@ function changePlace(params) {
 </script>
 
 <template>
-    <div class="bg-black cursor-pointer w-screen h-[100dvh]">
+    <div @click="changePlace('bg')" class="bg-black cursor-pointer w-screen h-[100dvh]">
         <img :src="bgList[bgIndex].img" :class="[countdown > 0 ? 'opacity-50' : 'opacity-20']"
             class="fixed top-0 left-0 z-50 w-screen h-[100dvh] object-cover duration-500" :alt="bgList[bgIndex].alt" />
         <canvas ref="canvas"></canvas>
@@ -224,7 +226,7 @@ function changePlace(params) {
             <source src="/fireworks.mp3" type="audio/mpeg" />
         </audio>
 
-        <button @click="changePlace"
+        <button @click.stop="changePlace('btn')"
             class="font-bold text-lg text-white bg-rose-500 hover:bg-rose-600 shadow-lg py-2 w-60 rounded-md absolute bottom-10 left-1/2 z-50 -translate-x-1/2">
             點我換地點：{{ bgList[bgIndex].name }}
         </button>
