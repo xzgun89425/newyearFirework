@@ -5,7 +5,7 @@ dayjs.extend(duration);
 const canvas = ref(null);
 const ctx = ref(null);
 const countdown = ref(10); // 倒數時間（秒）
-const countdownDate = ref('2024-12-26 17:53:00'); // 倒數日期
+const countdownDate = ref('2025-1-1 00:00:00'); // 倒數日期
 const timer = ref(null);
 const bgIndex = ref(0)
 const bgList = reactive([
