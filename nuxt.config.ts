@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   app: {
     head: {
         viewport: 'width=device-width, initial-scale=1',
+        title:'2025跨年煙火倒數',
         meta: [
             { name: 'theme-color', content: '#f43f5e' },
             { property: 'og:title', content: '2025跨年煙火倒數' },
