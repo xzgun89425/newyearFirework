@@ -10,7 +10,18 @@ dayjs.extend(duration);
 const canvas = ref(null);
 const ctx = ref(null);
 const countdown = ref(10); // 倒數時間（秒）
-const countdownDate = ref('2025-1-1 00:00:00'); // 倒數日期
+// const currentDate = ref(dayjs()); // 倒數日期
+const countdownDate = computed(() => {
+    const nextYear = dayjs().add(1, 'year').month(0)
+        .date(1)
+        .hour(0)
+        .minute(0)
+        .second(0).format('YYYY-MM-DD HH:mm:ss');
+    return nextYear;
+}); // 倒數日期
+const nextYear = computed(() => {
+    return dayjs().year() + 1;
+})
 const timer = ref(null);
 const bgIndex = ref(0)
 const bgList = reactive([
@@ -214,12 +225,12 @@ function changePlace(params) {
         <canvas ref="canvas"></canvas>
         <h1 :class="[countdown > 0 ? 'opacity-0' : 'opacity-100']"
             class="w-full text-center text-3xl md:text-5xl duration-500 font-bold mb-4 absolute top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2">
-            <p class="mb-4">2025 新年快樂</p>
+            <p class="mb-4">{{ nextYear }}新年快樂</p>
             <p>祝大家大紅大紫</p>
         </h1>
         <div v-if="countdown > 0"
             class="text-white absolute top-1/2 left-1/2 z-[60] -translate-x-1/2 -translate-y-1/2 text-xl w-full flex flex-col items-center">
-            <h1 class="text-center text-3xl md:text-5xl font-bold mb-4">2025 跨年倒數計時</h1>
+            <h1 class="text-center text-3xl md:text-5xl font-bold mb-4">{{ nextYear }}跨年倒數計時</h1>
             <Countdown v-model="countdownDate"></Countdown>
         </div>
         <audio hidden="true" ref="fireworksAudio">
