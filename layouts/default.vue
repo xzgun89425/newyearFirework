@@ -4,7 +4,7 @@ const config = useRuntimeConfig()
 const supabase = createClient(config.public.supabaseUrl, config.public.supabaseAnonKey)
 const table = ref([])
 async function getInstruments() {
-    const { data } = await supabase.from('FirstTable').select()
+    const { data } = await supabase.from('first').select()
     table.value = data
     console.log(data);
 
