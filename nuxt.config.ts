@@ -25,13 +25,20 @@ export default defineNuxtConfig({
       },
   },
 
-  modules: ["@nuxtjs/seo", "@nuxtjs/robots", "@nuxtjs/sitemap"],
+  modules: [],
 
   postcss: {
       plugins: {
           tailwindcss: {},
           autoprefixer: {},
       },
+  },
+
+  runtimeConfig: {
+    public: {
+      supabaseUrl: process.env.SUPABASE_URL,
+      supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
+    },
   },
 
   compatibilityDate: '2024-12-26',
