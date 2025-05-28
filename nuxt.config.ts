@@ -34,12 +34,12 @@ export default defineNuxtConfig({
       },
   },
 
-  runtimeConfig: {
-    public: {
-      supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
-      supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    },
-  },
+//   runtimeConfig: {
+//     public: {
+//       supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
+//       supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+//     },
+//   },
 
   compatibilityDate: '2024-12-26',
 })

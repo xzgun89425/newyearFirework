@@ -1,17 +1,17 @@
 <script setup>
-import { createClient } from '@supabase/supabase-js'
-const config = useRuntimeConfig()
-const supabase = createClient(config.public.supabaseUrl, config.public.supabaseAnonKey)
-const table = ref([])
-async function getInstruments() {
-    const { data } = await supabase.from('first').select()
-    table.value = data
-    console.log(data);
+// import { createClient } from '@supabase/supabase-js'
+// const config = useRuntimeConfig()
+// const supabase = createClient(config.public.supabaseUrl, config.public.supabaseAnonKey)
+// const table = ref([])
+// async function getInstruments() {
+//     const { data } = await supabase.from('first').select()
+//     table.value = data
+//     console.log(data);
 
-}
-onMounted(() => {
-    getInstruments()
-});
+// }
+// onMounted(() => {
+//     getInstruments()
+// });
 </script>
 
 <template>
