@@ -1,32 +1,32 @@
-import { useApiHandler } from '~/composables/Func/useApiHandler.js';
-import Cookies from 'js-cookie';
+// import { useApiHandler } from '~/composables/Func/useApiHandler.js';
+
 const fetch = (url, options) => {
     const nuxtApp = useNuxtApp();
     const authStore = useAuthStore();
     return $fetch(url, {
         onRequest({ options }) {
-            if (Cookies.get('authToken')) {
-                options.headers = {
-                    ...options.headers,
-                    Authorization: `Bearer ${Cookies.get('authToken')}`,
-                };
-            } else if (authStore.authToken) {
-                options.headers = {
-                    ...options.headers,
-                    Authorization: `Bearer ${authStore.authToken}`,
-                };
-            }
+            // if (Cookies.get('authToken')) {
+            //     options.headers = {
+            //         ...options.headers,
+            //         Authorization: `Bearer ${Cookies.get('authToken')}`,
+            //     };
+            // } else if (authStore.authToken) {
+            //     options.headers = {
+            //         ...options.headers,
+            //         Authorization: `Bearer ${authStore.authToken}`,
+            //     };
+            // }
 
-            options.headers = {
-                ...options.headers,
-                'Accept-Language': nuxtApp.$i18n.locale.value,
-            };
+            // options.headers = {
+            //     ...options.headers,
+            //     'Accept-Language': nuxtApp.$i18n.locale.value,
+            // };
             options.query = options.query || {};
             // console.log(options.headers, 'header');
         },
         // 错误处理
         onResponseError({ response }) {
-            useApiHandler(response);
+            // useApiHandler(response);
             return Promise.reject({
                 ...response?._data,
                 success: false,
@@ -35,7 +35,7 @@ const fetch = (url, options) => {
         // 响应拦截
         onResponse({ response }) {
             if (response.ok) {
-                useApiHandler(response);
+                // useApiHandler(response);
                 return response._data;
             }
         },
