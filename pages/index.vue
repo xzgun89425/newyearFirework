@@ -5,7 +5,7 @@ import taipei101 from "@/assets/taipei101.jpg"
 import tower from "@/assets/85.jpg"
 import alimountain from "@/assets/alimountain.jpeg"
 import centerpark from "@/assets/centerpark.jpg"
-import { apiGetTags } from "@/api"
+import { apiGetTags } from "@/apis"
 dayjs.extend(duration);
 const canvas = ref(null);
 const ctx = ref(null);
