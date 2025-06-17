@@ -169,7 +169,7 @@ const loop = () => {
 };
 const fireworksAudio = ref(null);
 onMounted(async () => {
-    const res = await apiGetTags()
+    // const res = await apiGetTags()
     console.log(res);
 
     await checkDate()
