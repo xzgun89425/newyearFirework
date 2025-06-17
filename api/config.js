@@ -1,8 +1,8 @@
 // import { useApiHandler } from '~/composables/Func/useApiHandler.js';
 
 const fetch = (url, options) => {
-    const nuxtApp = useNuxtApp();
-    const authStore = useAuthStore();
+    // const nuxtApp = useNuxtApp();
+    // const authStore = useAuthStore();
     return $fetch(url, {
         onRequest({ options }) {
             // if (Cookies.get('authToken')) {
