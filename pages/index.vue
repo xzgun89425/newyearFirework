@@ -5,7 +5,7 @@ import taipei101 from "@/assets/taipei101.jpg"
 import tower from "@/assets/85.jpg"
 import alimountain from "@/assets/alimountain.jpeg"
 import centerpark from "@/assets/centerpark.jpg"
-
+import { apiGetTags } from "@/api"
 dayjs.extend(duration);
 const canvas = ref(null);
 const ctx = ref(null);
@@ -169,6 +169,9 @@ const loop = () => {
 };
 const fireworksAudio = ref(null);
 onMounted(async () => {
+    const res = await apiGetTags()
+    console.log(res);
+
     await checkDate()
     const countdownInterval = setInterval(() => {
         countdown.value--;
